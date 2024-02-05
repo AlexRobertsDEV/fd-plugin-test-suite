@@ -4,3 +4,6 @@ node_modules/
 /blob-report/
 /playwright/.cache/
 .env.develop
+.env.production
+.env.release
+.env
