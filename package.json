@@ -3,12 +3,28 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "testConnection": "ts-node ./database/testConnection.ts",
+    "test-develop": "ENVIRONMENT=develop npx playwright test tests/fd-plugin.spec.ts",
+    "test-release": "ENVIRONMENT=release npx playwright test tests/fd-plugin.spec.ts",
+    "test-production": "ENVIRONMENT=production npx playwright test tests/fd-plugin.spec.ts",
+    "test-develop --headed": "ENVIRONMENT=develop npx playwright test tests/fd-plugin.spec.ts  --headed",
+    "test-release  --headed": "ENVIRONMENT=release npx playwright test tests/fd-plugin.spec.ts  --headed",
+    "test-production  --headed": "ENVIRONMENT=production npx playwright test tests/fd-plugin.spec.ts  --headed"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.41.2",
-    "@types/node": "^20.11.16"
+    "@types/mysql": "^2.15.25",
+    "@types/node": "^20.11.16",
+    "@types/ssh2": "^1.11.19",
+    "ts-node": "^10.9.2"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.1",
+    "mysql": "^2.18.1",
+    "ssh2": "^1.15.0"
   }
 }

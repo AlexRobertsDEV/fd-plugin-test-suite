@@ -1,5 +1,21 @@
 import { defineConfig, devices } from '@playwright/test';
 
+import * as dotenv from "dotenv";
+import * as fs from "fs";
+
+//staging ==> .env.staging
+if(process.env.ENVIRONMENT) {
+  console.log('ENVIRONMENT: ', process.env.ENVIRONMENT);
+  dotenv.config({
+    path: `./.env.${process.env.ENVIRONMENT}`,
+    override: true,
+  });
+} else {
+  // Read from default ".env" file.
+  dotenv.config();
+}
+
+
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
@@ -37,15 +53,15 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
 
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
-
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
+    // {
+    //   name: 'firefox',
+    //   use: { ...devices['Desktop Firefox'] },
+    // },
+    //
+    // {
+    //   name: 'webkit',
+    //   use: { ...devices['Desktop Safari'] },
+    // },
 
     /* Test against mobile viewports. */
     // {
